@@ -1,5 +1,3 @@
-package main.scala
-
 object objAkinator {
 
   trait ABanimal

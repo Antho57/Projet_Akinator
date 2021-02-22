@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="akinator" />
+    <profile name="sbt 1" modules="Akinator,akinator" />
   </component>
 </project>
