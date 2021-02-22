@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Akinator.iml" filepath="$PROJECT_DIR$/.idea/modules/Akinator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Akinator-build.iml" filepath="$PROJECT_DIR$/.idea/modules/Akinator-build.iml" />
+    </modules>
+  </component>
+</project>
