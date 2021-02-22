@@ -17,4 +17,5 @@ object objAkinator {
         Animal("Chauve-souris"), Animal("Ptérodactyle"))),
     Question("Est-ce qu'il ronronne ?",
       Animal("Chat"), Animal("Chien")))
+
 }
