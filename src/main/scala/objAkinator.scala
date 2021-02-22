@@ -15,7 +15,15 @@ object objAkinator {
   }
 
   def main(args: Array[String]) {
-    println(jeuSimple(a, "o\no\no\no\no\n".linesIterator))
+    println(jeuSimple(a, "o\no\no\no\n".linesIterator))
+    print(jeuLog(a, "o\nn\no\nn\n".linesIterator))
+  }
+
+  def jeuLog(a: ABanimal, it: Iterator[String]): List[String]= a match{
+    case Animal(_) => List(it.next())
+    case Question(_, oui, non) => val c = it.next()
+      if (c == "o") c::jeuLog(oui, it)
+      else c::jeuLog(non, it)
   }
 
 }
