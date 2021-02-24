@@ -1,4 +1,5 @@
-import java.io.FileNotFoundException
+import scala.io.Source
+import java.io._
 
 object objAkinator {
 
@@ -32,10 +33,9 @@ object objAkinator {
     case Question(q, oui, non) => if (it.next() == "o") new Question(q, jeuApprentissage(oui, it), non) else new Question(q, oui, jeuApprentissage(non, it))
   }
 
-  import scala.io.Source
   def fichierToABanimal(nomf: String): ABanimal = {
     try {
-      val fichier = Source.fromFile(nomf)
+      val fichier = Source.fromFile("src/main/scala/" +nomf)
       val f = fichier.getLines().toList.iterator
       fichier.close()
       def aux(f: Iterator[String]): ABanimal = {
@@ -50,10 +50,22 @@ object objAkinator {
     }
   }
 
+  def ABanimalToFichier(nomf:String, a:ABanimal): Unit ={
+    val writer = new FileWriter(new File("src/main/scala/" +nomf))
+    def aux(w: FileWriter, a: ABanimal): Unit =a match{
+      case Animal(n) => w.write(n+"\n")
+      case Question(q, oui, non) => w.write("q :" +q +"\n")
+        aux(w, oui)
+        aux(w, non)
+    }
+    aux(writer, a)
+    writer.close()
+  }
+
   def main(args: Array[String]) {
     println(jeuSimple(a, "o\no\no\no\n".linesIterator))
     println(jeuLog(a, "o\nn\no\nn\n".linesIterator))
     println(jeuApprentissage(a, "n\nn\nChat\nEst-ce qu'il ronronne ?\no\n".linesIterator))
-    println(fichierToABanimal("src/main/scala/Arbre.txt"))
+    println(fichierToABanimal("Arbre.txt"))
   }
 }
