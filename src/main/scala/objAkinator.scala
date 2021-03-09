@@ -62,10 +62,21 @@ object objAkinator {
     writer.close()
   }
 
+
+  def jeuSimpleJNSP(a:ABanimal, it:Iterator[String], l:List[ABanimal]=Nil):Boolean= a match {
+    case Animal(v) => if (it.next() == "o") true else if (l.isEmpty) false else jeuSimpleJNSP(l.head, it, l.tail)
+    case Question(_, oui, non) => val tmp = it.next()
+      if (tmp == "o") jeuSimpleJNSP(oui, it, l)
+      else if (tmp == "n") jeuSimpleJNSP(non, it, l)
+      else jeuSimpleJNSP(oui, it, non::l)
+  }
+
+
   def main(args: Array[String]) {
     println(jeuSimple(a, "o\no\no\no\n".linesIterator))
     println(jeuLog(a, "o\nn\no\nn\n".linesIterator))
     println(jeuApprentissage(a, "n\nn\nChat\nEst-ce qu'il ronronne ?\no\n".linesIterator))
     println(fichierToABanimal("Arbre.txt"))
+    println(jeuSimpleJNSP(a, "o\nx\nx\nn\nn\no\no\n".linesIterator))
   }
 }
