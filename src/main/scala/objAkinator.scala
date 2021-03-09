@@ -1,5 +1,6 @@
 import scala.io.Source
 import java.io._
+import java.util.Scanner
 
 object objAkinator {
 
@@ -73,10 +74,16 @@ object objAkinator {
 
 
   def main(args: Array[String]) {
-    println(jeuSimple(a, "o\no\no\no\n".linesIterator))
+    jeuApprentissage(fichierToABanimal("Arbre.txt"), "n\nn\nChat\nEst-ce qu'il ronronne ?\no\n".linesIterator);
+    val sc = new Scanner(System.in);
+    System.out.println("<------ Bienvenue dans AKINATOR ------>" +"\n\n");
+    val rep = sc.nextLine();
+
+
+    /*println(jeuSimple(a, "o\no\no\no\n".linesIterator))
     println(jeuLog(a, "o\nn\no\nn\n".linesIterator))
     println(jeuApprentissage(a, "n\nn\nChat\nEst-ce qu'il ronronne ?\no\n".linesIterator))
     println(fichierToABanimal("Arbre.txt"))
-    println(jeuSimpleJNSP(a, "o\nx\nx\nn\nn\no\no\n".linesIterator))
+    println(jeuSimpleJNSP(a, "o\nx\nx\nn\nn\no\no\n".linesIterator))*/
   }
 }
