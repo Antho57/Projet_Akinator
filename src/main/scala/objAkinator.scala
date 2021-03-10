@@ -34,6 +34,32 @@ object objAkinator {
     case Question(q, oui, non) => if (it.next() == "o") new Question(q, jeuApprentissage(oui, it), non) else new Question(q, oui, jeuApprentissage(non, it))
   }
 
+
+
+  def jeuApprentissageFinal(a: ABanimal): ABanimal = a match {
+    case Animal(v) => System.out.println("Pensez-vous à : " +v +" ?")
+      val sc = new Scanner(System.in)
+      if (sc.nextLine() == "o"){
+        System.out.println("J'ai gagné !!!\n");
+        a
+      }else {
+        System.out.println("J'ai perdu - quelle est la bonne réponse ?")
+        val nom = sc.nextLine()
+        val tmp = new Animal(nom)
+        System.out.println("Quelle question permet de différencier " +nom +" de " +v +" ?")
+        val qtmp = sc.nextLine()
+        System.out.println("Quelle est la réponse à cette question pour " +nom)
+        if (sc.nextLine() == "o") new Question(qtmp, tmp, a)
+        else new Question(qtmp, a, tmp)
+      }
+    case Question(q, oui, non) => System.out.println(q)
+      val sc = new Scanner(System.in)
+      if (sc.nextLine() == "o") new Question(q, jeuApprentissageFinal(oui), non)
+      else new Question(q, oui, jeuApprentissageFinal(non))
+  }
+
+
+
   def fichierToABanimal(nomf: String): ABanimal = {
     try {
       val fichier = Source.fromFile("src/main/scala/" +nomf)
@@ -74,10 +100,25 @@ object objAkinator {
 
 
   def main(args: Array[String]) {
-    jeuApprentissage(fichierToABanimal("Arbre.txt"), "n\nn\nChat\nEst-ce qu'il ronronne ?\no\n".linesIterator);
-    val sc = new Scanner(System.in);
     System.out.println("<------ Bienvenue dans AKINATOR ------>" +"\n\n");
-    val rep = sc.nextLine();
+    System.out.println("Avant de commencer vous devez penser à un animal !" +"\n\n"
+      +"Vous devez répondre aux questions par 'o' pour oui et 'n' pour non !" +"\n\n"
+      +"Êtes-vous prêts ?" +"\n");
+    val sc = new Scanner(System.in)
+    if (sc.nextLine() == "o") {
+      var rep = jeuApprentissageFinal(fichierToABanimal("Arbre.txt"));
+      System.out.println("Voulez-vous rejouer ?")
+      while (sc.nextLine() == "o") {
+        rep = jeuApprentissageFinal(rep);
+        System.out.println("Voulez-vous rejouer ?")
+      }
+      System.out.println("Merci d'avoir joué ;)")
+      ABanimalToFichier("Arbre.txt", rep)
+    }
+
+
+
+
 
 
     /*println(jeuSimple(a, "o\no\no\no\n".linesIterator))
