@@ -106,6 +106,15 @@ object objAkinator {
       +"Êtes-vous prêts ?" +"\n");
     val sc = new Scanner(System.in)
     if (sc.nextLine() == "o") {
+      System.out.println("Quelle type de jeu voulez-vous jouer ?\n" +
+        "  -Jeu simple avec apprentissage : 1\n" +
+        "  -Jeu simple 'je ne sais pas' : 2\n" +
+        "  -Jeu simple : 3"
+      )
+      sc.nextLine() match {
+        case 1 => var rep = jeuApprentissageFinal(fichierToABanimal("Arbre.txt"));
+        case 2 => 
+      }
       var rep = jeuApprentissageFinal(fichierToABanimal("Arbre.txt"));
       System.out.println("Voulez-vous rejouer ?")
       while (sc.nextLine() == "o") {
