@@ -174,22 +174,32 @@ object objAkinator {
         "  -Jeu simple : 3"
       )
 
-      val choix = sc.nextLine()
+      var choix = sc.nextLine()
 
-      val rep = choix match {
-        case "1" => jeuApprentissageFinal(fichierToABanimal("Arbre.txt"))
+      choix match {
+        case "1" => val a = jeuApprentissageFinal(fichierToABanimal("Arbre.txt")); ABanimalToFichier("Arbre.txt", a);
         case "2" => jeuSimpleJNSPFinal(fichierToABanimal("Arbre.txt"))
         case "3" => jeuSimpleFinal(fichierToABanimal("Arbre.txt"))
       }
 
-      System.out.println("Voulez-vous rejouer ?")
-      while (sc.nextLine() == "o") {
-        var rep = choix match {
-          case "1" => val a = jeuApprentissageFinal(rep); ABanimalToFichier("Arbre.txt", a); a
+      System.out.println("Voulez-vous rejouer ? ('o'), Changer de mode de jeu? ('g'), Quitter ? ('q')")
+      var repTmp = sc.nextLine()
+      while (repTmp == "o" || repTmp == "g") {
+        if (repTmp == "g") {
+          System.out.println("Quelle type de jeu voulez-vous jouer ?\n" +
+            "  -Jeu avec apprentissage : 1\n" +
+            "  -Jeu avec 'je ne sais pas' : 2\n" +
+            "  -Jeu simple : 3"
+          )
+          choix = sc.nextLine()
+        }
+        choix match {
+          case "1" => val a = jeuApprentissageFinal(fichierToABanimal("Arbre.txt")); ABanimalToFichier("Arbre.txt", a);
           case "2" => jeuSimpleJNSPFinal(fichierToABanimal("Arbre.txt"))
           case "3" => jeuSimpleFinal(fichierToABanimal("Arbre.txt"))
         }
-        System.out.println("Voulez-vous rejouer ?")
+        System.out.println("Voulez-vous rejouer ? ('o'), Changer de mode de jeu? ('g'), Quitter ? ('q')")
+        repTmp = sc.nextLine()
       }
 
       System.out.println("Merci d'avoir joué ;)")
