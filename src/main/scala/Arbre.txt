@@ -4,6 +4,8 @@ q :Est-ce qu'il a un goitre ?
 q :Et-ce qu'il vit en mer ?
 Pélican
 Toucan
+q :Est-ce qu'il volle du pain ?
+Mouette
 Pigeon
 q :Est-ce qu'il a des poils ?
 Chauve-souris
