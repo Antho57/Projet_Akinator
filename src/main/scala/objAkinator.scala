@@ -178,7 +178,7 @@ object objAkinator {
 
       choix match {
         case "1" => val a = jeuApprentissageFinal(fichierToABanimal("Arbre.txt")); ABanimalToFichier("Arbre.txt", a);
-        case "2" => jeuSimpleJNSPFinal(fichierToABanimal("Arbre.txt"))
+        case "2" => System.out.println("!!!!!! Attention dans ce mode de jeu vous pouvez répondre par 'x' si vous ne savez pas !!!!!!"); jeuSimpleJNSPFinal(fichierToABanimal("Arbre.txt"))
         case "3" => jeuSimpleFinal(fichierToABanimal("Arbre.txt"))
       }
 
@@ -195,7 +195,7 @@ object objAkinator {
         }
         choix match {
           case "1" => val a = jeuApprentissageFinal(fichierToABanimal("Arbre.txt")); ABanimalToFichier("Arbre.txt", a);
-          case "2" => jeuSimpleJNSPFinal(fichierToABanimal("Arbre.txt"))
+          case "2" => System.out.println("!!!!!! Attention dans ce mode de jeu vous pouvez répondre par 'x' si vous ne savez pas !!!!!!"); jeuSimpleJNSPFinal(fichierToABanimal("Arbre.txt"))
           case "3" => jeuSimpleFinal(fichierToABanimal("Arbre.txt"))
         }
         System.out.println("Voulez-vous rejouer ? ('o'), Changer de mode de jeu? ('g'), Quitter ? ('q')")
@@ -205,11 +205,4 @@ object objAkinator {
       System.out.println("Merci d'avoir joué ;)")
     }
   }
-
-
-  /*println(jeuSimple(a, "o\no\no\no\n".linesIterator))
-    println(jeuLog(a, "o\nn\no\nn\n".linesIterator))
-    println(jeuApprentissage(a, "n\nn\nChat\nEst-ce qu'il ronronne ?\no\n".linesIterator))
-    println(fichierToABanimal("Arbre.txt"))
-    println(jeuSimpleJNSP(a, "o\nx\nx\nn\nn\no\no\n".linesIterator))*/
 }

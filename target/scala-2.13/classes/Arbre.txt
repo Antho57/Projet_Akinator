@@ -11,5 +11,7 @@ q :Est-ce qu'il a des poils ?
 Chauve-souris
 Ptérodactyle
 q :Est-ce qu'il ronronne ?
+q :Est-ce qu'il a une crinière ?
+Tigre
 Chat
 Chien
